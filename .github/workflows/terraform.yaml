@@ -21,9 +21,6 @@ jobs:
       TF_IN_AUTOMATION: "true"
       TF_CLI_ARGS: "-input=false"
       NETBOX_API_TOKEN: ${{ secrets.NETBOX_API_TOKEN }}
-    defaults:
-      run:
-        working-directory: ./terraform
     steps:
       - name: Checkout
         uses: actions/checkout@v4
