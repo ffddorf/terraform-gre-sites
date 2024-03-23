@@ -15,6 +15,7 @@ resource "netbox_available_prefix" "tunnels_v4" {
 
   status      = "active"
   description = "Tunnel from ${each.value} to ${var.name}"
+  role_id     = var.tunnel_prefix_role_id
 }
 
 resource "netbox_ip_address" "remote_tunnel_address_v4" {
@@ -42,6 +43,7 @@ resource "netbox_available_prefix" "tunnels_v6" {
 
   status      = "active"
   description = "Tunnel from ${each.value} to ${var.name}"
+  role_id     = var.tunnel_prefix_role_id
 }
 
 resource "netbox_ip_address" "remote_tunnel_address_v6" {

@@ -54,3 +54,7 @@ data "netbox_virtual_machines" "core_routers" {
   #   value = "active"
   # }
 }
+
+data "netbox_ipam_role" "transfer" {
+  name = "Transfer"
+}

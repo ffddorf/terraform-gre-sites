@@ -61,3 +61,8 @@ variable "client_prefix_v4" {
   description = "private network to assign client subnets from"
   default     = "10.0.0.0/8"
 }
+
+variable "tunnel_prefix_role_id" {
+  type        = number
+  description = "Netbox ID of the role for tunnel prefixes"
+}

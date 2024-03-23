@@ -23,4 +23,6 @@ module "device" {
     [for dev in data.netbox_devices.core_routers.devices : dev.name],
     [for vm in data.netbox_virtual_machines.core_routers.vms : vm.name],
   )
+
+  tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
 }
