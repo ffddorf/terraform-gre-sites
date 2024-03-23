@@ -55,3 +55,9 @@ variable "site_id" {
   type        = number
   description = "Netbox ID of the site"
 }
+
+variable "client_prefix_v4" {
+  type        = string
+  description = "private network to assign client subnets from"
+  default     = "10.0.0.0/8"
+}
