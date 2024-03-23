@@ -33,3 +33,25 @@ resource "netbox_device_interface" "lan" {
 
   description = each.value.name
 }
+
+resource "netbox_ip_address" "router_addresses_v4" {
+  for_each = netbox_prefix.networks_v4
+
+  vrf_id              = netbox_vrf.local.id
+  ip_address          = "${cidrhost(each.value.prefix, 1)}/16"
+  status              = "active"
+  device_interface_id = netbox_device_interface.lan[each.key].id
+
+  description = "Local router address for '${netbox_vlan.networks[each.key].name}' network on ${var.name}"
+}
+
+resource "netbox_ip_address" "router_addresses_v6" {
+  for_each = netbox_prefix.networks_v6
+
+  vrf_id              = netbox_vrf.local.id
+  ip_address          = "${cidrhost(each.value.prefix, 1)}/64"
+  status              = "active"
+  device_interface_id = netbox_device_interface.lan[each.key].id
+
+  description = "Local router address for '${netbox_vlan.networks[each.key].name}' network on ${var.name}"
+}
