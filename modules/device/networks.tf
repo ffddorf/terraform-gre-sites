@@ -6,6 +6,8 @@ resource "netbox_prefix" "local_v4" {
   vrf_id = netbox_vrf.local.id
   prefix = var.client_prefix_v4
   status = "active"
+
+  description = "Local network for ${var.name}"
 }
 
 resource "netbox_prefix" "networks_v4" {
