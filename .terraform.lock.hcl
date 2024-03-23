@@ -2,17 +2,17 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/e-breuninger/netbox" {
-  version     = "3.8.0"
-  constraints = "3.8.0"
+  version     = "3.8.4"
+  constraints = "~> 3.8.0, 3.8.4"
   hashes = [
-    "h1:mkm+wxLIwnBSm1/qzmJR+x3ZKWtI2suiAof0pTmnyJY=",
-    "zh:23c74c155b99fab6eb9db6c4f1e9d47e2962cd2d72b1b07357a0da71c726add9",
-    "zh:50751d67f9eeeee1379485f1765dc8ede976b704fa44290ffe77085d4bc2f51b",
-    "zh:7d13af8050d677b71fb65b314e62da255168322d05403fb16cb39c908d280e76",
-    "zh:819b919f89db60d183388d961fbe94145f8d6013edde3cf9f0d39625841aa7e3",
-    "zh:8548b7f2c914f6a8a462d87df4c485bf6698214a6b05614232e231dc7ae179a1",
-    "zh:91f26b88b79f4f9ca40fae68220cbdea89d003a97f3969927e7e8501c0952d4d",
-    "zh:f52ee127b201699bd62142f4a1ae7cb73eb532dfe5e5e1f813506923c5423240",
-    "zh:febdbe33cb2b5725232109e58a99499c9183061ad6c95abc1ee1a2d1e6e472a7",
+    "h1:9tNqNnmHK5S8v4yjORFMAnBt/FWu3wi3BmmH6NfG4Xc=",
+    "zh:0da38e66bad29897d5692d8915d4939ce4cacbc1278b2414cd07c8bd26930290",
+    "zh:1fe79abc8f0645a916a90d65950acff65ea651067fe66802c1478f016298949f",
+    "zh:4f12f49e5c7735c81d398f29bc57d3e563f28eeb458a0f5a490f4162a78c3704",
+    "zh:581616a6e5c466b64a82b3aa624afd297f98ae8bf89d96ecc21870b2884c7c02",
+    "zh:630409270d6a49f6f3805ded81f5dce39e4c0079c011a0e7be662a19dfbb1b99",
+    "zh:6c3622aaec80c8c499237160dcf57511b5e29dc4ac8c31d2f0000fdfc41d19db",
+    "zh:ae9598d17ae54c3ef83cff0bc7deabfa0eb156e20cfaaf0f2400e67d11424732",
+    "zh:b89afa71fde17d52c20526ad714d39de5e80c289caf2471e7a49e5e7b42c8adc",
   ]
 }
