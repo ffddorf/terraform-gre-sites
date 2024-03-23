@@ -9,6 +9,7 @@ module "device" {
 
   source = "./modules/device"
 
+  site_id   = each.value.site_id
   device_id = each.value.device_id
   name      = each.value.name
 

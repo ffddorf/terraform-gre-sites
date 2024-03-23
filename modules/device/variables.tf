@@ -32,3 +32,26 @@ variable "tunnel_prefix_v6_id" {
   type        = number
   description = "Netbox ID of prefix (v6) to create tunnel prefix in"
 }
+
+variable "networks" {
+  type = list(object({
+    id   = number
+    name = string
+  }))
+  description = "client networks to create"
+  default = [
+    {
+      id   = 1
+      name = "Management"
+    },
+    {
+      id   = 2
+      name = "Access"
+    },
+  ]
+}
+
+variable "site_id" {
+  type        = number
+  description = "Netbox ID of the site"
+}
