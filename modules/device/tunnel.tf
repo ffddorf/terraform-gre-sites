@@ -16,6 +16,7 @@ resource "netbox_available_prefix" "tunnels_v4" {
   status      = "active"
   description = "Tunnel from ${each.value} to ${var.name}"
   role_id     = var.tunnel_prefix_role_id
+  tenant_id   = var.tenant_id
 }
 
 resource "netbox_ip_address" "remote_tunnel_address_v4" {
@@ -24,6 +25,7 @@ resource "netbox_ip_address" "remote_tunnel_address_v4" {
   ip_address  = "${cidrhost(each.value.prefix, 0)}/${each.value.prefix_length}"
   status      = "active"
   description = "Peer address of ${each.key} for ${var.name}"
+  tenant_id   = var.tenant_id
 }
 
 resource "netbox_ip_address" "local_tunnel_address_v4" {
@@ -33,6 +35,7 @@ resource "netbox_ip_address" "local_tunnel_address_v4" {
   device_interface_id = netbox_device_interface.tunnels[each.key].id
   status              = "active"
   description         = "Peer address of ${var.name} for ${each.key}"
+  tenant_id           = var.tenant_id
 }
 
 resource "netbox_available_prefix" "tunnels_v6" {
@@ -44,6 +47,7 @@ resource "netbox_available_prefix" "tunnels_v6" {
   status      = "active"
   description = "Tunnel from ${each.value} to ${var.name}"
   role_id     = var.tunnel_prefix_role_id
+  tenant_id   = var.tenant_id
 }
 
 resource "netbox_ip_address" "remote_tunnel_address_v6" {
@@ -52,6 +56,7 @@ resource "netbox_ip_address" "remote_tunnel_address_v6" {
   ip_address  = "${cidrhost(each.value.prefix, 1)}/${each.value.prefix_length}"
   status      = "active"
   description = "Peer address of ${each.key} for ${var.name}"
+  tenant_id   = var.tenant_id
 }
 
 resource "netbox_ip_address" "local_tunnel_address_v6" {
@@ -61,4 +66,5 @@ resource "netbox_ip_address" "local_tunnel_address_v6" {
   device_interface_id = netbox_device_interface.tunnels[each.key].id
   status              = "active"
   description         = "Peer address of ${var.name} for ${each.key}"
+  tenant_id           = var.tenant_id
 }

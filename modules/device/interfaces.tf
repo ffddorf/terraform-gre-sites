@@ -41,6 +41,7 @@ resource "netbox_ip_address" "router_addresses_v4" {
   ip_address          = "${cidrhost(each.value.prefix, 1)}/16"
   status              = "active"
   device_interface_id = netbox_device_interface.lan[each.key].id
+  tenant_id           = var.tenant_id
 
   description = "Local router address for '${netbox_vlan.networks[each.key].name}' network on ${var.name}"
 }
@@ -51,6 +52,7 @@ resource "netbox_ip_address" "router_addresses_v6" {
   ip_address          = "${cidrhost(each.value.prefix, 1)}/64"
   status              = "active"
   device_interface_id = netbox_device_interface.lan[each.key].id
+  tenant_id           = var.tenant_id
 
   description = "Local router address for '${netbox_vlan.networks[each.key].name}' network on ${var.name}"
 }

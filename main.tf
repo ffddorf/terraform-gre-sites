@@ -12,6 +12,7 @@ module "device" {
   site_id   = each.value.site_id
   device_id = each.value.device_id
   name      = each.value.name
+  tenant_id = var.tenant_id
 
   sites_prefix_v4_id = data.netbox_prefix.sites_prefix_v4.id
   sites_prefix_v6_id = data.netbox_prefix.sites_prefix_v6.id

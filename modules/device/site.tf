@@ -3,6 +3,7 @@ resource "netbox_available_prefix" "site_v4" {
   prefix_length    = 32
   status           = "active"
   description      = "Site prefix for ${var.name}"
+  tenant_id        = var.tenant_id
 }
 
 resource "netbox_ip_address" "loopback_v4" {
@@ -11,6 +12,7 @@ resource "netbox_ip_address" "loopback_v4" {
   description = "Loopback address for ${var.name}"
 
   device_interface_id = one(data.netbox_device_interfaces.lo.interfaces).id
+  tenant_id           = var.tenant_id
 }
 
 resource "netbox_device_primary_ip" "v4" {
@@ -24,6 +26,7 @@ resource "netbox_available_prefix" "site_v6" {
   prefix_length    = 56
   status           = "active"
   description      = "Site prefix for ${var.name}"
+  tenant_id        = var.tenant_id
 }
 
 locals {
@@ -35,6 +38,7 @@ resource "netbox_prefix" "loopback_v6" {
   prefix      = cidrsubnet(netbox_available_prefix.site_v6.prefix, local.loopback_prefix_newbits, 0)
   status      = "active"
   description = "Loopback prefix for ${var.name}"
+  tenant_id   = var.tenant_id
 }
 
 resource "netbox_ip_address" "loopback_v6" {
@@ -43,6 +47,7 @@ resource "netbox_ip_address" "loopback_v6" {
   description = "Loopback address for ${var.name}"
 
   device_interface_id = one(data.netbox_device_interfaces.lo.interfaces).id
+  tenant_id           = var.tenant_id
 }
 
 resource "netbox_device_primary_ip" "v6" {
