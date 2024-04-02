@@ -16,4 +16,6 @@ resource "netbox_vlan" "networks" {
   vid      = each.value.id
   group_id = netbox_vlan_group.group.id
   site_id  = var.site_id
+
+  tenant_id = var.tenant_id
 }

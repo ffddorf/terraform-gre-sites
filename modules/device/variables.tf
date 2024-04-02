@@ -66,3 +66,9 @@ variable "tunnel_prefix_role_id" {
   type        = number
   description = "Netbox ID of the role for tunnel prefixes"
 }
+
+variable "tenant_id" {
+  type        = number
+  description = "NetBox tenant ID to use for all resources"
+  default     = 1
+}

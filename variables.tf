@@ -39,3 +39,9 @@ variable "core_router_tag" {
   description = "Tag to use for finding core routers"
   default     = "core-router"
 }
+
+variable "tenant_id" {
+  type        = number
+  description = "NetBox tenant ID to use for all resources"
+  default     = 2
+}
