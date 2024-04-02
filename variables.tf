@@ -43,5 +43,5 @@ variable "core_router_tag" {
 variable "tenant_id" {
   type        = number
   description = "NetBox tenant ID to use for all resources"
-  default     = 1
+  default     = 2
 }
