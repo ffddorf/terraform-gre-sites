@@ -11,6 +11,7 @@ resource "netbox_prefix" "local_v4" {
 
   description = "Local network for ${var.name}"
   tenant_id   = var.tenant_id
+  site_id     = var.site_id
 }
 
 resource "netbox_prefix" "networks_v4" {
@@ -23,6 +24,7 @@ resource "netbox_prefix" "networks_v4" {
   status      = "active"
   description = "'${each.value.name}' network for ${var.name}"
   tenant_id   = var.tenant_id
+  site_id     = var.site_id
 }
 
 resource "netbox_prefix" "networks_v6" {
@@ -34,4 +36,5 @@ resource "netbox_prefix" "networks_v6" {
   status      = "active"
   description = "'${each.value.name}' network for ${var.name}"
   tenant_id   = var.tenant_id
+  site_id     = var.site_id
 }
