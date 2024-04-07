@@ -1,9 +1,11 @@
 resource "netbox_available_prefix" "site_v4" {
   parent_prefix_id = var.sites_prefix_v4_id
   prefix_length    = 32
-  status           = "active"
-  description      = "Site prefix for ${var.name}"
-  tenant_id        = var.tenant_id
+
+  status      = "active"
+  description = "Site prefix for ${var.name}"
+  tenant_id   = var.tenant_id
+  site_id     = var.site_id
 }
 
 resource "netbox_ip_address" "loopback_v4" {
@@ -24,9 +26,11 @@ resource "netbox_device_primary_ip" "v4" {
 resource "netbox_available_prefix" "site_v6" {
   parent_prefix_id = var.sites_prefix_v6_id
   prefix_length    = 56
-  status           = "active"
-  description      = "Site prefix for ${var.name}"
-  tenant_id        = var.tenant_id
+
+  status      = "active"
+  description = "Site prefix for ${var.name}"
+  tenant_id   = var.tenant_id
+  site_id     = var.site_id
 }
 
 locals {
@@ -39,6 +43,7 @@ resource "netbox_prefix" "loopback_v6" {
   status      = "active"
   description = "Loopback prefix for ${var.name}"
   tenant_id   = var.tenant_id
+  site_id     = var.site_id
 }
 
 resource "netbox_ip_address" "loopback_v6" {
