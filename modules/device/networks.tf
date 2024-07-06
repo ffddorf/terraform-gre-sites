@@ -9,7 +9,7 @@ resource "netbox_prefix" "local_v4" {
   prefix = var.client_prefix_v4
   status = "active"
 
-  description = "Local network for ${var.name}"
+  description = "Local network for ${local.location}"
   tenant_id   = var.tenant_id
   site_id     = var.site_id
 }
@@ -22,7 +22,7 @@ resource "netbox_prefix" "networks_v4" {
   prefix  = cidrsubnet(var.client_prefix_v4, 8, each.value.vid)
 
   status      = "active"
-  description = "'${each.value.name}' network for ${var.name}"
+  description = "'${each.value.name}' network for ${local.location}"
   tenant_id   = var.tenant_id
   site_id     = var.site_id
 }
@@ -34,7 +34,7 @@ resource "netbox_prefix" "networks_v6" {
   prefix  = cidrsubnet(netbox_available_prefix.site_v6.prefix, 8, each.value.vid)
 
   status      = "active"
-  description = "'${each.value.name}' network for ${var.name}"
+  description = "'${each.value.name}' network for ${local.location}"
   tenant_id   = var.tenant_id
   site_id     = var.site_id
 }
