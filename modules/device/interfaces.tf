@@ -23,15 +23,20 @@ data "netbox_device_interfaces" "eth1" {
 }
 
 resource "netbox_device_interface" "lan" {
-  for_each = netbox_vlan.networks
+  for_each = { for net in var.networks : net.id => net }
 
   device_id = var.device_id
-  name      = "${one(data.netbox_device_interfaces.eth1.interfaces).name}.${each.value.vid}"
+  name      = "${one(data.netbox_device_interfaces.eth1.interfaces).name}.${each.key}"
+  label     = each.value.name
   type      = "virtual"
 
   parent_device_interface_id = one(data.netbox_device_interfaces.eth1.interfaces).id
 
   description = each.value.name
+
+  depends_on = [
+    netbox_vlan.networks
+  ]
 }
 
 resource "netbox_ip_address" "router_addresses_v4" {
