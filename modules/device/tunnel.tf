@@ -69,3 +69,23 @@ resource "netbox_ip_address" "local_tunnel_address_v6" {
   description         = "Peer address of ${var.name} for ${each.key}"
   tenant_id           = var.tenant_id
 }
+
+resource "netbox_vpn_tunnel" "core" {
+  for_each = { for i, name in var.tunnel_peer_names : name => i }
+
+  name          = "${each.key}-${var.name}"
+  encapsulation = "gre"
+  status        = "active"
+  description   = "Site tunnel from ${each.key} to ${local.location}"
+
+  tunnel_group_id = var.tunnel_group_id
+}
+
+resource "netbox_vpn_tunnel_termination" "site" {
+  for_each = netbox_vpn_tunnel.core
+
+  tunnel_id = each.value.id
+  role      = "peer"
+
+  device_interface_id = netbox_device_interface.tunnels[each.key].id
+}

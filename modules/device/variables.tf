@@ -23,6 +23,11 @@ variable "tunnel_peer_names" {
   description = "names of tunnel peers"
 }
 
+variable "tunnel_group_id" {
+  type        = number
+  description = "ID of the tunnel group to create tunnels in"
+}
+
 variable "tunnel_prefix_v4_id" {
   type        = number
   description = "Netbox ID of prefix (v4) to create tunnel prefix in"

@@ -4,6 +4,10 @@ locals {
   }
 }
 
+resource "netbox_vpn_tunnel_group" "sites" {
+  name = "site-tunnels"
+}
+
 module "device" {
   for_each = local.devices
 
@@ -26,4 +30,6 @@ module "device" {
   )
 
   tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
+
+  tunnel_group_id = netbox_vpn_tunnel_group.sites.id
 }
