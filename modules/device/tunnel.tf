@@ -3,6 +3,7 @@ resource "netbox_device_interface" "tunnels" {
 
   type        = "virtual"
   name        = "tun${each.value}"
+  label       = "Tunnel ${each.key}"
   description = "Tunnel to ${each.key}"
   device_id   = var.device_id
 }
