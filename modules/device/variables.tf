@@ -77,3 +77,9 @@ variable "tenant_id" {
   description = "NetBox tenant ID to use for all resources"
   default     = 1
 }
+
+variable "gre_dnat_ip" {
+  type        = string
+  description = "Private IP addressed used to receive GRE packets from the CPE"
+  default     = "192.168.178.10/24"
+}
