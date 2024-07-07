@@ -87,6 +87,5 @@ resource "netbox_vpn_tunnel_termination" "site" {
   tunnel_id = each.value.id
   role      = "peer"
 
-  device_interface_id   = netbox_device_interface.tunnels[each.key].id
-  outside_ip_address_id = netbox_ip_address.gre_dnat.id
+  device_interface_id = netbox_device_interface.tunnels[each.key].id
 }
