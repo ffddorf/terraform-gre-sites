@@ -2,24 +2,24 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/e-breuninger/netbox" {
-  version     = "3.8.7"
-  constraints = "~> 3.8.0, 3.8.7"
+  version     = "3.8.9"
+  constraints = "~> 3.8.0, 3.8.9"
   hashes = [
-    "h1:0UL/YE7DRqQJ4tzm7vcXNCZzOFH1zy7CdDRGV+NqV5E=",
-    "h1:CTGE8Goit22NSVvZB+hLRLIJ+qIbYzw/UlWXAqOIM04=",
-    "h1:IksgIhMiTAjaljDvm9ZVZ4kHK1iGRoLrmVGQpY9bBUQ=",
-    "h1:KyxL+dGvrQ4nUfU/llcY5JFQRybdXloWIcQaAiDzIWQ=",
-    "h1:cl74D6QA8wuwUQ/kh7OSQiEA/o2Is2GM5Itj3or7Vaw=",
-    "h1:hOc5WTzcoIS8zttG2nakwsXTms8lUaKrTNIAPZO/7Dg=",
-    "h1:qGScfxO/WoJDlvnBlGEV5TTH1ldVH/crCYkhYWDE2oE=",
-    "h1:rKs3/1oquqokZAxDZ80MXTKXRxc/XY3q6kirPc6/L8Y=",
-    "zh:1d0b1461c0cbb2a4102b2f03a29d78822faecc86200b46eddf524309abe81378",
-    "zh:21fcb9687e9a55696c99aacf873415e7d115e2822be1da1a82d12d4a865ae500",
-    "zh:402ada222028cbbd1409ed6b00d440e752f78dc14415ed7b95ee76bbaac4d0dd",
-    "zh:6158e50fb06a98c215d3aa754fe16525f7b495b65539f283e3248dd12746c83a",
-    "zh:8795bb11fa0d76a0a30301b48300adf403bc734b9d92b2a48c3b7f9327b8346c",
-    "zh:8ae3d7be01fe88cd281228628e4bad47ee172b69acd44aa4b7b5ee34ad63ceb4",
-    "zh:aafb6c081f0cd9547676a719474c7952fb0aee5610a1aaed6becd7da08b6a3fe",
-    "zh:e6274685696e2f12146d80e09af79dea0b394be2c48154daff75f9b626a5d5cf",
+    "h1:6L0WAuc5kfrk1O32Wx5CroCEguXAs0Jj06emL+RObuI=",
+    "h1:MRSvxYPhVQt/wxx70YzcC754gdDv7DVHTAgQACn/vWo=",
+    "h1:Q9JfTCVnU5UMuW8GyeU+ZG/sgDozJM55tKF0EZHWuoQ=",
+    "h1:Vk6mdQXH9+R1545WDzuxCkysFW6TyTY5chMY5QytN7A=",
+    "h1:cikojvvKIcEpARXHskH0dK3SKXPOwwcCx6O7mtTZRYE=",
+    "h1:cmWTKdLnmzVzfL8h+hE8f5w7ovryEJX7BA4W6o9nyow=",
+    "h1:n5NP9+SQIZT3DOM8g+E9c1sH3SsgGEG5E/EJmUF5J8k=",
+    "h1:zfEmicL4n1Nhks0eE6K8/MYMKyMl9vm1GlpjjDA6iLo=",
+    "zh:12f85049d3648096e4270ffcf794fc0901c36e7234b90cd72617482044ad2d7e",
+    "zh:1ed988502ce3d78b3ddd891a288462796d682361697adcd05ba20853d3077c40",
+    "zh:38d10fe0e6627d9a343623b56dfb82978cc800c991fcaee17911c34ef9a4024c",
+    "zh:434719f1a7c3ec41ba3295ff39cc12dc9b789dc6b93438bcfbf8f6af3717f96b",
+    "zh:4c2f017ad6617f0dbd70d94191d18ff2d0131f7b28e37a3fcf4adbc601fe1e7b",
+    "zh:9216470626f0648e53bac408fd86c73fd209386dfd1e5d7f9f6c8a88a846c927",
+    "zh:97006cf9c2d3951d7598c91c7d83e00f7a8031e95d0c0b0f2028d19106c51ef8",
+    "zh:9c29ad5aa6d7b7e780a1ecd8f5f64e08acfd3297e56f68c165c9390270e928e6",
   ]
 }
