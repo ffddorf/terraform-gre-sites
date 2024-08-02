@@ -18,9 +18,14 @@ variable "sites_prefix_v6_id" {
   description = "Netbox ID of prefix (v6) to create site prefix in"
 }
 
-variable "tunnel_peer_names" {
-  type        = list(string)
-  description = "names of tunnel peers"
+variable "core_tunnels" {
+  type = list(object({
+    name        = string
+    device_id   = string
+    device_type = string
+    if_name     = string
+  }))
+  description = "info about tunnel peers"
 }
 
 variable "tunnel_group_id" {
