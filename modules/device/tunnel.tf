@@ -14,7 +14,7 @@ resource "netbox_device_interface" "core" {
   type        = "virtual"
   name        = each.value.if_name
   label       = "Tunnel ${var.name}"
-  description = "Tunnel to ${var.name}"
+  description = "Tunnel to ${local.location}"
   device_id   = each.value.device_id
 
   mtu = 1476
@@ -24,7 +24,7 @@ resource "netbox_interface" "core" {
   for_each = { for peer in var.core_tunnels : peer.name => peer if peer.device_type == "vm" }
 
   name               = each.value.if_name
-  description        = "Tunnel to ${var.name}"
+  description        = "Tunnel to ${local.location}"
   virtual_machine_id = each.value.device_id
 
   mtu = 1476
@@ -41,7 +41,7 @@ resource "netbox_available_prefix" "tunnels_v4" {
   prefix_length    = 31
 
   status      = "active"
-  description = "Tunnel from ${each.key} to ${var.name}"
+  description = "Tunnel from ${each.key} to ${local.location}"
   role_id     = var.tunnel_prefix_role_id
   tenant_id   = var.tenant_id
 }
@@ -75,7 +75,7 @@ resource "netbox_available_prefix" "tunnels_v6" {
   prefix_length    = 64
 
   status      = "active"
-  description = "Tunnel from ${each.key} to ${var.name}"
+  description = "Tunnel from ${each.key} to ${local.location}"
   role_id     = var.tunnel_prefix_role_id
   tenant_id   = var.tenant_id
 }
