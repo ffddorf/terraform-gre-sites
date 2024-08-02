@@ -122,3 +122,23 @@ resource "netbox_vpn_tunnel_termination" "site" {
   device_interface_id   = netbox_device_interface.tunnels[each.key].id
   outside_ip_address_id = netbox_ip_address.gre_dnat.id
 }
+
+resource "netbox_vpn_tunnel_termination" "core_device" {
+  for_each = { for peer in var.core_tunnels : peer.name => peer if peer.device_type == "device" }
+
+  tunnel_id = netbox_vpn_tunnel.core[each.key].id
+  role      = "peer"
+
+  device_interface_id   = netbox_device_interface.core[each.key].id
+  outside_ip_address_id = each.value.primary_ipv4_id
+}
+
+resource "netbox_vpn_tunnel_termination" "core_vm" {
+  for_each = { for peer in var.core_tunnels : peer.name => peer if peer.device_type == "vm" }
+
+  tunnel_id = netbox_vpn_tunnel.core[each.key].id
+  role      = "peer"
+
+  virtual_machine_interface_id = netbox_interface.core[each.key].id
+  outside_ip_address_id        = each.value.primary_ipv4_id
+}
