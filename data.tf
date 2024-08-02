@@ -58,3 +58,30 @@ data "netbox_virtual_machines" "core_routers" {
 data "netbox_ipam_role" "transfer" {
   name = "Transfer"
 }
+
+locals {
+  devices = {
+    for dev in data.netbox_devices.devices.devices : dev.name => dev
+  }
+  core_devices = concat(
+    [for dev in data.netbox_devices.core_routers.devices : {
+      id     = dev.device_id
+      name   = dev.name
+      device = dev
+    }],
+    [for vm in data.netbox_virtual_machines.core_routers.vms : {
+      id   = vm.vm_id
+      name = vm.name
+      vm   = vm
+    }],
+  )
+}
+
+data "netbox_ip_addresses" "core_primary" {
+  for_each = { for dev in local.core_devices : dev.name => dev }
+
+  filter {
+    name  = "ip_address"
+    value = can(each.value.vm) ? each.value.vm.primary_ip4 : each.value.device.primary_ipv4
+  }
+}
