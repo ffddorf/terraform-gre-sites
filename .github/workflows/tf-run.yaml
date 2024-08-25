@@ -16,7 +16,7 @@ jobs:
       checks: write
     env:
       # renovate: datasource=github-releases depName=hashicorp/terraform
-      TERRAFORM_VERSION: "1.9.3"
+      TERRAFORM_VERSION: "1.9.5"
       TF_HTTP_PASSWORD: ${{ github.token }}
       TF_IN_AUTOMATION: "true"
       TF_CLI_ARGS: "-input=false"
