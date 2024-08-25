@@ -2,24 +2,24 @@
 # Manual edits may be lost in future updates.
 
 provider "registry.terraform.io/e-breuninger/netbox" {
-  version     = "3.8.9"
-  constraints = "~> 3.8.0, 3.8.9"
+  version     = "3.9.0"
+  constraints = "~> 3.9.0, 3.8.9"
   hashes = [
-    "h1:6L0WAuc5kfrk1O32Wx5CroCEguXAs0Jj06emL+RObuI=",
-    "h1:MRSvxYPhVQt/wxx70YzcC754gdDv7DVHTAgQACn/vWo=",
-    "h1:Q9JfTCVnU5UMuW8GyeU+ZG/sgDozJM55tKF0EZHWuoQ=",
-    "h1:Vk6mdQXH9+R1545WDzuxCkysFW6TyTY5chMY5QytN7A=",
-    "h1:cikojvvKIcEpARXHskH0dK3SKXPOwwcCx6O7mtTZRYE=",
-    "h1:cmWTKdLnmzVzfL8h+hE8f5w7ovryEJX7BA4W6o9nyow=",
-    "h1:n5NP9+SQIZT3DOM8g+E9c1sH3SsgGEG5E/EJmUF5J8k=",
-    "h1:zfEmicL4n1Nhks0eE6K8/MYMKyMl9vm1GlpjjDA6iLo=",
-    "zh:12f85049d3648096e4270ffcf794fc0901c36e7234b90cd72617482044ad2d7e",
-    "zh:1ed988502ce3d78b3ddd891a288462796d682361697adcd05ba20853d3077c40",
-    "zh:38d10fe0e6627d9a343623b56dfb82978cc800c991fcaee17911c34ef9a4024c",
-    "zh:434719f1a7c3ec41ba3295ff39cc12dc9b789dc6b93438bcfbf8f6af3717f96b",
-    "zh:4c2f017ad6617f0dbd70d94191d18ff2d0131f7b28e37a3fcf4adbc601fe1e7b",
-    "zh:9216470626f0648e53bac408fd86c73fd209386dfd1e5d7f9f6c8a88a846c927",
-    "zh:97006cf9c2d3951d7598c91c7d83e00f7a8031e95d0c0b0f2028d19106c51ef8",
-    "zh:9c29ad5aa6d7b7e780a1ecd8f5f64e08acfd3297e56f68c165c9390270e928e6",
+    "h1:8FdKGY9//2gT664BGaA225eNlsqQeFBXFE6med+/G+k=",
+    "h1:LAqCeqmsEL8Fg29GrzE+Tjeer93j0T8bis55sYWttS0=",
+    "h1:V3KHZ1XTum8BNGTQ7uRu7/jiUcTvvNluCyDnegO8ANk=",
+    "h1:kCR+aN1sbHyGWHasXG3JC3K8dQqJJD0muRq/JEqg4Os=",
+    "h1:kZ8P7Gy80Shh9PPn3zH+KnSk7Ze6uDrqcOBYSttUN0g=",
+    "h1:lAGWALJ+sw+RIJJQjVU0AQHDyzDx2l6LmJ5IRtE6+6U=",
+    "h1:rFx0/pbFsHhQyZK6EOGhdqkCR/8q1okz0sXfgndpeO8=",
+    "h1:soo59MAnvRZi6EXjykKA+q0Bkgsraht4AcQl6ED89A4=",
+    "zh:1179589f3d23794ef85cb1df9d1bbb2b57b8fdb27da392170438728e8b6f8ac6",
+    "zh:21b2348d794faa2c3ea4d994fd657018652ab9d3972af4b462650270ee49308d",
+    "zh:2cb970d303f5a77d061b607705e2add1e51f925d38901f3d24d9efdc0fbb552e",
+    "zh:4348f2cf8ccdee3d7574cfaedcb5b06e63c2c0e0415300b27a04434f815ed539",
+    "zh:4d6ca2b0ad96c1d5346f1fe1a807d45409185d5898634f8aabdff7ae98cfc938",
+    "zh:4f056a8c5b49060beb2ecb094e6e1845ddfeaace5867781bd77e813be87f78f3",
+    "zh:b74c58bd86cd48051471c584aea9ecf2d821ef0c9d17fca3463ec1c8db60d713",
+    "zh:e57f9e5463a8db7012b40606d5d4be03ec7647e322e55d8aeb6cd4873653625a",
   ]
 }
