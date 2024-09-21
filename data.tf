@@ -63,18 +63,20 @@ locals {
   devices = {
     for dev in data.netbox_devices.devices.devices : dev.name => dev
   }
-  core_devices = concat(
-    [for dev in data.netbox_devices.core_routers.devices : {
+  core_devices_unsorted = merge(
+    { for dev in data.netbox_devices.core_routers.devices : dev.name => {
       id     = dev.device_id
       name   = dev.name
       device = dev
-    }],
-    [for vm in data.netbox_virtual_machines.core_routers.vms : {
+    } },
+    { for vm in data.netbox_virtual_machines.core_routers.vms : vm.name => {
       id   = vm.vm_id
       name = vm.name
       vm   = vm
-    }],
+    } },
   )
+  core_device_names_sorted = sort(keys(local.core_devices_unsorted))
+  core_devices             = [for name in local.core_device_names_sorted : local.core_devices_unsorted[name]]
 }
 
 data "netbox_ip_addresses" "core_primary" {
