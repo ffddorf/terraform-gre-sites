@@ -8,6 +8,17 @@ variable "name" {
   description = "name of the device"
 }
 
+variable "allocate_local_net" {
+  type        = bool
+  description = "Whether to create a VRF and local address resources for the site"
+}
+
+variable "use_dnat_for_gre" {
+  type        = bool
+  description = "Whether to create a static private IP for DNAT of GRE traffic at the site"
+  default     = false
+}
+
 variable "sites_prefix_v4_id" {
   type        = number
   description = "Netbox ID of prefix (v4) to create site prefix in"
@@ -97,4 +108,15 @@ variable "gre_dnat_ip" {
   type        = string
   description = "Private IP addressed used to receive GRE packets from the CPE"
   default     = "192.168.178.10/24"
+}
+
+variable "tunnel_endpoint_public_v4" {
+  type        = string
+  description = "IPv4 address to use as tunnel endpoint for this device in case DNAT is not used for GRE"
+  default     = null
+
+  validation {
+    condition     = var.use_dnat_for_gre || var.tunnel_endpoint_public_v4 != null
+    error_message = "When use_dnat_for_gre is not set, this needs to be set"
+  }
 }

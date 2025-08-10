@@ -18,7 +18,7 @@ data "netbox_device_role" "device_role" {
   name = var.device_role
 }
 
-data "netbox_devices" "devices" {
+data "netbox_devices" "managed" {
   filter {
     name  = "tags"
     value = var.device_tag
@@ -60,8 +60,8 @@ data "netbox_ipam_role" "transfer" {
 }
 
 locals {
-  devices = {
-    for dev in data.netbox_devices.devices.devices : dev.name => dev
+  managed_devices = {
+    for dev in data.netbox_devices.managed.devices : dev.name => dev
   }
   core_devices_unsorted = merge(
     { for dev in data.netbox_devices.core_routers.devices : dev.name => {

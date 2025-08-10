@@ -1,4 +1,6 @@
 data "netbox_device_interfaces" "lo" {
+  count = var.allocate_local_net ? 1 : 0
+
   filter {
     name  = "device_id"
     value = var.device_id
@@ -11,6 +13,8 @@ data "netbox_device_interfaces" "lo" {
 }
 
 data "netbox_device_interfaces" "eth1" {
+  count = var.allocate_local_net ? 1 : 0
+
   filter {
     name  = "device_id"
     value = var.device_id
@@ -23,14 +27,14 @@ data "netbox_device_interfaces" "eth1" {
 }
 
 resource "netbox_device_interface" "lan" {
-  for_each = { for net in var.networks : net.id => net }
+  for_each = var.allocate_local_net ? { for net in var.networks : net.id => net } : {}
 
   device_id = var.device_id
-  name      = "${one(data.netbox_device_interfaces.eth1.interfaces).name}.${each.key}"
+  name      = "${one(data.netbox_device_interfaces.eth1[0].interfaces).name}.${each.key}"
   label     = each.value.name
   type      = "virtual"
 
-  parent_device_interface_id = one(data.netbox_device_interfaces.eth1.interfaces).id
+  parent_device_interface_id = one(data.netbox_device_interfaces.eth1[0].interfaces).id
 
   description = each.value.name
 
@@ -42,7 +46,7 @@ resource "netbox_device_interface" "lan" {
 resource "netbox_ip_address" "router_addresses_v4" {
   for_each = netbox_prefix.networks_v4
 
-  vrf_id              = netbox_vrf.local.id
+  vrf_id              = one(netbox_vrf.local).id
   ip_address          = "${cidrhost(each.value.prefix, 1)}/16"
   status              = "active"
   device_interface_id = netbox_device_interface.lan[each.key].id

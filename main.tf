@@ -3,7 +3,7 @@ resource "netbox_vpn_tunnel_group" "sites" {
 }
 
 module "device" {
-  for_each = local.devices
+  for_each = local.managed_devices
 
   source = "./modules/device"
 
@@ -11,6 +11,9 @@ module "device" {
   device_id = each.value.device_id
   name      = each.value.name
   tenant_id = var.tenant_id
+
+  allocate_local_net = true
+  use_dnat_for_gre   = true
 
   sites_prefix_v4_id = data.netbox_prefix.sites_prefix_v4.id
   sites_prefix_v6_id = data.netbox_prefix.sites_prefix_v6.id
