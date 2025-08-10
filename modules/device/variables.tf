@@ -39,9 +39,19 @@ variable "tunnel_prefix_v4_id" {
   description = "Netbox ID of prefix (v4) to create tunnel prefix in"
 }
 
+variable "tunnel_vrf_v4_id" {
+  type        = number
+  description = "Netbox ID of VRF for the v4 tunnel prefix"
+}
+
 variable "tunnel_prefix_v6_id" {
   type        = number
   description = "Netbox ID of prefix (v6) to create tunnel prefix in"
+}
+
+variable "tunnel_vrf_v6_id" {
+  type        = number
+  description = "Netbox ID of VRF for the v6 tunnel prefix"
 }
 
 variable "networks" {
