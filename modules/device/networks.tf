@@ -1,11 +1,15 @@
 resource "netbox_vrf" "local" {
+  count = var.allocate_local_net || var.use_dnat_for_gre ? 1 : 0
+
   name = var.name
 
   tenant_id = var.tenant_id
 }
 
 resource "netbox_prefix" "local_v4" {
-  vrf_id = netbox_vrf.local.id
+  count = var.allocate_local_net ? 1 : 0
+
+  vrf_id = one(netbox_vrf.local).id
   prefix = var.client_prefix_v4
   status = "container"
 
@@ -15,11 +19,11 @@ resource "netbox_prefix" "local_v4" {
 }
 
 resource "netbox_prefix" "networks_v4" {
-  for_each = netbox_vlan.networks
+  for_each = var.allocate_local_net ? netbox_vlan.networks : {}
 
-  vrf_id  = netbox_vrf.local.id
+  vrf_id  = one(netbox_vrf.local).id
   vlan_id = each.value.id
-  prefix  = cidrsubnet(var.client_prefix_v4, 8, each.value.vid)
+  prefix  = cidrsubnet(one(netbox_prefix.local_v4).prefix, 8, each.value.vid)
 
   status      = "active"
   description = "'${each.value.name}' network for ${local.location}"
@@ -28,7 +32,7 @@ resource "netbox_prefix" "networks_v4" {
 }
 
 resource "netbox_prefix" "networks_v6" {
-  for_each = netbox_vlan.networks
+  for_each = var.allocate_local_net ? netbox_vlan.networks : {}
 
   vlan_id = each.value.id
   prefix  = cidrsubnet(netbox_available_prefix.site_v6.prefix, 8, each.value.vid)
