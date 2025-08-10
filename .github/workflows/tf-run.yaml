@@ -7,7 +7,7 @@ on:
 jobs:
   run:
     name: Run
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     concurrency:
       group: terraform
       cancel-in-progress: false
