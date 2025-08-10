@@ -2,17 +2,6 @@ resource "netbox_vpn_tunnel_group" "sites" {
   name = "site-tunnels"
 }
 
-module "tunnel_interfaces" {
-  for_each = { for dev in local.core_devices : dev.name => dev }
-
-  source = "./modules/available_interfaces"
-
-  prefix      = "tun"
-  device_id   = each.value.id
-  device_type = can(each.value.vm) ? "vm" : "device"
-  targets     = [for name, dev in local.devices : name]
-}
-
 module "device" {
   for_each = local.devices
 
@@ -35,7 +24,6 @@ module "device" {
     name            = dev.name
     device_id       = dev.id
     device_type     = can(dev.vm) ? "vm" : "device"
-    if_name         = module.tunnel_interfaces[dev.name].interface_names[each.key]
     primary_ipv4_id = one(data.netbox_ip_addresses.core_primary[dev.name].ip_addresses).id
   }]
 
