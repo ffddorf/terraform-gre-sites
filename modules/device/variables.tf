@@ -23,7 +23,6 @@ variable "core_tunnels" {
     name            = string
     device_id       = string
     device_type     = string
-    if_name         = string
     primary_ipv4_id = number
   }))
   description = "info about tunnel peers"

@@ -8,11 +8,20 @@ resource "netbox_device_interface" "tunnels" {
   device_id   = var.device_id
 }
 
+resource "random_integer" "core_ifnum" {
+  min  = 1000
+  max  = 10000
+  seed = tostring(var.device_id)
+  keepers = {
+    device_id = var.device_id
+  }
+}
+
 resource "netbox_device_interface" "core" {
   for_each = { for peer in var.core_tunnels : peer.name => peer if peer.device_type == "device" }
 
   type        = "virtual"
-  name        = each.value.if_name
+  name        = "tun${random_integer.core_ifnum.result}"
   label       = "Tunnel ${var.name}"
   description = "Tunnel to ${local.location}"
   device_id   = each.value.device_id
@@ -23,7 +32,7 @@ resource "netbox_device_interface" "core" {
 resource "netbox_interface" "core" {
   for_each = { for peer in var.core_tunnels : peer.name => peer if peer.device_type == "vm" }
 
-  name               = each.value.if_name
+  name               = "tun${random_integer.core_ifnum.result}"
   description        = "Tunnel to ${local.location}"
   virtual_machine_id = each.value.device_id
 
