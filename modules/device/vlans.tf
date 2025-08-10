@@ -2,8 +2,7 @@ resource "netbox_vlan_group" "group" {
   name = var.name
   slug = replace(var.name, "[^a-zA-Z0-9-]+", "-")
 
-  min_vid = 1
-  max_vid = 256
+  vid_ranges = [[1, 256]]
 
   scope_type = "dcim.site"
   scope_id   = var.site_id
