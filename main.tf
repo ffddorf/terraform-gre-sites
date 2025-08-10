@@ -27,7 +27,9 @@ module "device" {
   sites_prefix_v6_id = data.netbox_prefix.sites_prefix_v6.id
 
   tunnel_prefix_v4_id = data.netbox_prefix.tunnels_prefix_v4.id
+  tunnel_vrf_v4_id    = data.netbox_prefix.tunnels_prefix_v4.vrf_id
   tunnel_prefix_v6_id = data.netbox_prefix.tunnels_prefix_v6.id
+  tunnel_vrf_v6_id    = data.netbox_prefix.tunnels_prefix_v6.vrf_id
 
   core_tunnels = [for dev in local.core_devices : {
     name            = dev.name

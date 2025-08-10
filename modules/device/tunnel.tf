@@ -38,6 +38,7 @@ resource "netbox_available_prefix" "tunnels_v4" {
   for_each = { for peer in var.core_tunnels : peer.name => {} }
 
   parent_prefix_id = var.tunnel_prefix_v4_id
+  vrf_id           = var.tunnel_vrf_v4_id
   prefix_length    = 31
 
   status      = "active"
@@ -53,6 +54,7 @@ resource "netbox_ip_address" "remote_tunnel_address_v4" {
   status      = "active"
   description = "Peer address of ${each.key} for ${var.name}"
   tenant_id   = var.tenant_id
+  vrf_id      = var.tunnel_vrf_v4_id
 
   object_type  = each.value.device_type == "vm" ? "virtualization.vminterface" : "dcim.interface"
   interface_id = local.core_interfaces[each.key].id
@@ -66,6 +68,7 @@ resource "netbox_ip_address" "local_tunnel_address_v4" {
   status              = "active"
   description         = "Peer address of ${var.name} for ${each.key}"
   tenant_id           = var.tenant_id
+  vrf_id              = var.tunnel_vrf_v4_id
 }
 
 resource "netbox_available_prefix" "tunnels_v6" {
@@ -78,6 +81,7 @@ resource "netbox_available_prefix" "tunnels_v6" {
   description = "Tunnel from ${each.key} to ${local.location}"
   role_id     = var.tunnel_prefix_role_id
   tenant_id   = var.tenant_id
+  vrf_id      = var.tunnel_vrf_v6_id
 }
 
 resource "netbox_ip_address" "remote_tunnel_address_v6" {
@@ -87,6 +91,7 @@ resource "netbox_ip_address" "remote_tunnel_address_v6" {
   status      = "active"
   description = "Peer address of ${each.key} for ${var.name}"
   tenant_id   = var.tenant_id
+  vrf_id      = var.tunnel_vrf_v6_id
 
   object_type  = each.value.device_type == "vm" ? "virtualization.vminterface" : "dcim.interface"
   interface_id = local.core_interfaces[each.key].id
@@ -100,6 +105,7 @@ resource "netbox_ip_address" "local_tunnel_address_v6" {
   status              = "active"
   description         = "Peer address of ${var.name} for ${each.key}"
   tenant_id           = var.tenant_id
+  vrf_id              = var.tunnel_vrf_v6_id
 }
 
 resource "netbox_vpn_tunnel" "core" {
