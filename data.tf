@@ -77,6 +77,12 @@ locals {
   )
   core_device_names_sorted = sort(keys(local.core_devices_unsorted))
   core_devices             = [for name in local.core_device_names_sorted : local.core_devices_unsorted[name]]
+  core_tunnels = [for dev in local.core_devices : {
+    name            = dev.name
+    device_id       = dev.id
+    device_type     = can(dev.vm) ? "vm" : "device"
+    primary_ipv4_id = one(data.netbox_ip_addresses.core_primary[dev.name].ip_addresses).id
+  }]
 }
 
 data "netbox_ip_addresses" "core_primary" {

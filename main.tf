@@ -23,12 +23,7 @@ module "device" {
   tunnel_prefix_v6_id = data.netbox_prefix.tunnels_prefix_v6.id
   tunnel_vrf_v6_id    = data.netbox_prefix.tunnels_prefix_v6.vrf_id
 
-  core_tunnels = [for dev in local.core_devices : {
-    name            = dev.name
-    device_id       = dev.id
-    device_type     = can(dev.vm) ? "vm" : "device"
-    primary_ipv4_id = one(data.netbox_ip_addresses.core_primary[dev.name].ip_addresses).id
-  }]
+  core_tunnels = local.core_tunnels
 
   tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
 
