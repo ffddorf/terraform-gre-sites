@@ -45,3 +45,20 @@ variable "tenant_id" {
   description = "NetBox tenant ID to use for all resources"
   default     = 2
 }
+
+variable "tenant_tunnels" {
+  type = list(object({
+    tenant = string # slug
+    site   = string # slug
+
+    existing_router = optional(string) # name
+    remote_ip       = optional(string)
+  }))
+  default     = []
+  description = "Custom GRE tunnels provided to external tenants"
+
+  validation {
+    condition     = alltrue([for t in var.tenant_tunnels : t.existing_router != null || t.remote_ip != null])
+    error_message = "Need to specify either existing_router or remote_ip"
+  }
+}
