@@ -8,7 +8,7 @@ data "netbox_device_interfaces" "wan" {
 
   filter {
     name  = "name"
-    value = "eth2"
+    value = var.wan_interface
   }
 }
 

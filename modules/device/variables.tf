@@ -8,6 +8,11 @@ variable "name" {
   description = "name of the device"
 }
 
+variable "wan_interface" {
+  type        = string
+  description = "Name of the interface used for WAN"
+}
+
 variable "allocate_local_net" {
   type        = bool
   description = "Whether to create a VRF and local address resources for the site"

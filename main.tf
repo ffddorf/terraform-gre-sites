@@ -7,10 +7,11 @@ module "device" {
 
   source = "./modules/device"
 
-  site_id   = each.value.site_id
-  device_id = each.value.device_id
-  name      = each.value.name
-  tenant_id = var.tenant_id
+  site_id       = each.value.site_id
+  device_id     = each.value.device_id
+  wan_interface = "eth2"
+  name          = each.value.name
+  tenant_id     = var.tenant_id
 
   allocate_local_net = true
   use_dnat_for_gre   = true
