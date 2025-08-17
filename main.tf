@@ -7,10 +7,11 @@ module "device" {
 
   source = "./modules/device"
 
-  site_id   = each.value.site_id
-  device_id = each.value.device_id
-  name      = each.value.name
-  tenant_id = var.tenant_id
+  site_id       = each.value.site_id
+  device_id     = each.value.device_id
+  wan_interface = "eth2"
+  name          = each.value.name
+  tenant_id     = var.tenant_id
 
   allocate_local_net = true
   use_dnat_for_gre   = true
@@ -23,14 +24,39 @@ module "device" {
   tunnel_prefix_v6_id = data.netbox_prefix.tunnels_prefix_v6.id
   tunnel_vrf_v6_id    = data.netbox_prefix.tunnels_prefix_v6.vrf_id
 
-  core_tunnels = [for dev in local.core_devices : {
-    name            = dev.name
-    device_id       = dev.id
-    device_type     = can(dev.vm) ? "vm" : "device"
-    primary_ipv4_id = one(data.netbox_ip_addresses.core_primary[dev.name].ip_addresses).id
-  }]
+  core_tunnels = local.core_tunnels
 
   tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
 
   tunnel_group_id = netbox_vpn_tunnel_group.sites.id
+}
+
+resource "netbox_vpn_tunnel_group" "tenants" {
+  name = "External Tenants"
+
+  description = "Tunnels to external tenants with devices not managed by us"
+}
+
+module "tenant" {
+  for_each = { for i, t in var.tenant_tunnels : "${t.tenant}-${t.remote_ip == null ? t.existing_router : substr(sha1(t.remote_ip), 0, 7)}" => t }
+
+  source = "./modules/tenant"
+
+  tenant = each.value.tenant
+  site   = each.value.site
+
+  existing_router = each.value.existing_router
+  device_name     = "ext-${each.key}"
+  remote_ip       = each.value.remote_ip
+
+  core_tunnels = local.core_tunnels
+
+  sites_prefix_v4_id    = data.netbox_prefix.sites_prefix_v4.id
+  sites_prefix_v6_id    = data.netbox_prefix.sites_prefix_v6.id
+  tunnel_prefix_v4_id   = data.netbox_prefix.tunnels_prefix_v4.id
+  tunnel_vrf_v4_id      = data.netbox_prefix.tunnels_prefix_v4.vrf_id
+  tunnel_prefix_v6_id   = data.netbox_prefix.tunnels_prefix_v6.id
+  tunnel_vrf_v6_id      = data.netbox_prefix.tunnels_prefix_v6.vrf_id
+  tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
+  tunnel_group_id       = netbox_vpn_tunnel_group.tenants.id
 }
