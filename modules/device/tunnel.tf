@@ -128,14 +128,6 @@ resource "netbox_vpn_tunnel" "core" {
   tunnel_group_id = var.tunnel_group_id
 }
 
-resource "netbox_ip_address" "tunnel_endpoint" {
-  count = var.use_dnat_for_gre ? 0 : 1
-
-  ip_address  = var.tunnel_endpoint_public_v4
-  status      = "active"
-  description = "Tunnel endpoint for ${local.location}"
-}
-
 resource "netbox_vpn_tunnel_termination" "site" {
   for_each = netbox_vpn_tunnel.core
 
@@ -143,7 +135,7 @@ resource "netbox_vpn_tunnel_termination" "site" {
   role      = "peer"
 
   device_interface_id   = netbox_device_interface.tunnels[each.key].id
-  outside_ip_address_id = one(var.use_dnat_for_gre ? netbox_ip_address.gre_dnat : netbox_ip_address.tunnel_endpoint).id
+  outside_ip_address_id = var.use_dnat_for_gre ? one(netbox_ip_address.gre_dnat).id : var.tunnel_endpoint_address_id
 }
 
 resource "netbox_vpn_tunnel_termination" "core_device" {

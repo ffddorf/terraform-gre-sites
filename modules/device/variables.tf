@@ -115,13 +115,13 @@ variable "gre_dnat_ip" {
   default     = "192.168.178.10/24"
 }
 
-variable "tunnel_endpoint_public_v4" {
-  type        = string
-  description = "IPv4 address to use as tunnel endpoint for this device in case DNAT is not used for GRE"
+variable "tunnel_endpoint_address_id" {
+  type        = number
+  description = "Netbox ID of address to use as tunnel endpoint for this device in case DNAT is not used for GRE"
   default     = null
 
   validation {
-    condition     = var.use_dnat_for_gre || var.tunnel_endpoint_public_v4 != null
+    condition     = var.use_dnat_for_gre || var.tunnel_endpoint_address_id != null
     error_message = "When use_dnat_for_gre is not set, this needs to be set"
   }
 }
