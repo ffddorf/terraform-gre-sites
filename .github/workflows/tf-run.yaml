@@ -26,7 +26,7 @@ jobs:
       NETBOX_API_TOKEN: ${{ secrets.NETBOX_API_TOKEN }}
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - uses: hashicorp/setup-terraform@v3
         with:
           terraform_version: ${TERRAFORM_VERSION}
