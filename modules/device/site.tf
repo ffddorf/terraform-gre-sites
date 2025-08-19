@@ -21,7 +21,7 @@ resource "netbox_ip_address" "loopback_v4" {
   status      = "active"
   description = "Loopback address for ${local.location}"
 
-  device_interface_id = var.allocate_local_net ? one(data.netbox_device_interfaces.lo[0].interfaces).id : null
+  device_interface_id = data.netbox_device_interfaces.lo.interfaces[0].id
   tenant_id           = var.tenant_id
 }
 
@@ -59,7 +59,7 @@ resource "netbox_ip_address" "loopback_v6" {
   status      = "active"
   description = "Loopback address for ${local.location}"
 
-  device_interface_id = var.allocate_local_net ? one(data.netbox_device_interfaces.lo[0].interfaces).id : null
+  device_interface_id = data.netbox_device_interfaces.lo.interfaces[0].id
   tenant_id           = var.tenant_id
 }
 

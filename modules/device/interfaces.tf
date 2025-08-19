@@ -1,6 +1,4 @@
 data "netbox_device_interfaces" "lo" {
-  count = var.allocate_local_net ? 1 : 0
-
   filter {
     name  = "device_id"
     value = var.device_id
@@ -9,6 +7,15 @@ data "netbox_device_interfaces" "lo" {
   filter {
     name  = "name"
     value = "lo"
+  }
+
+  limit = 1
+
+  lifecycle {
+    postcondition {
+      condition     = length(self.interfaces) == 1
+      error_message = "Unable to find lo interface on device"
+    }
   }
 }
 
