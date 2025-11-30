@@ -39,4 +39,6 @@ module "tunnel" {
   tunnel_prefix_role_id = var.tunnel_prefix_role_id
 
   tunnel_group_id = var.tunnel_group_id
+
+  isp_asn_id = var.isp_asn_id
 }

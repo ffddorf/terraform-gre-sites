@@ -32,6 +32,8 @@ variable "core_tunnels" {
     device_id       = string
     device_type     = string
     primary_ipv4_id = number
+    site_id         = number
+    tenant_id       = number
   }))
   description = "info about tunnel peers"
 }
@@ -65,5 +67,9 @@ variable "tunnel_prefix_role_id" {
 }
 
 variable "tunnel_group_id" {
+  type = number
+}
+
+variable "isp_asn_id" {
   type = number
 }

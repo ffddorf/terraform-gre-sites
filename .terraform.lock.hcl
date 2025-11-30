@@ -24,6 +24,29 @@ provider "registry.terraform.io/e-breuninger/netbox" {
   ]
 }
 
+provider "registry.terraform.io/ffddorf/netbox-bgp" {
+  version     = "0.1.0-rc2"
+  constraints = "0.1.0-rc2"
+  hashes = [
+    "h1:22DVd5XR0Mt//zvVrc1+1dp+Fhg22MkkfwqUL1iwJp8=",
+    "zh:0361cd3bc335b1a42575e53dad8c4aa0e1db1afd30530b606edd8a6250acd453",
+    "zh:18984c1a406c08e30ddb1b85c9038acd078d6b6bcc64203abdee0703c67dbdeb",
+    "zh:24e3335377838f02dcfd86d3f065b80975182dad8a40d2a71d44cdb97ceaa32c",
+    "zh:2bebf5890fd3f065df63a1f0551e39f340c64371de6f08811949813e77089f5b",
+    "zh:3ea48605d43d698bae1fbbf2b3ce0c0c0266c89b6186d646d1291b8c571bc06f",
+    "zh:58f216e4633cab297dd4283570c8b8ec332d7939b1b77d4696ed78b2cac4012e",
+    "zh:595efd7299e1f51a2d6888cf969c442d82b71da647fa5dbe1fc0d24bece3c99f",
+    "zh:5e41188d8d29da3f263660f663617b50ff43e56b31f819e42ce2eed533e10972",
+    "zh:85437a104391759492e2f78a030b1d0bda69fa40d2b5ae19d3065441bdf7f4a6",
+    "zh:890df766e9b839623b1f0437355032a3c006226a6c200cd911e15ee1a9014e9f",
+    "zh:9007457bf5553b18045afe220d44873f35ea90d721db7b9019a61f4f05d2ed55",
+    "zh:99d6abb8959327499dbb969b8929184c439969a386db34d76cbb67500a91a268",
+    "zh:9e02aab9f6ac7e433cb20fcc6a3b425f04f9010aa36219fab18a7b61beb7c106",
+    "zh:e53085b081cf1631d4006b50e11b76f605f9aed876053b986ca2f3176bf83c83",
+    "zh:f63e40e7ad07f379926a766c9b02e02e3f39bbbd5024408ae5dfe7a5c7f10318",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/random" {
   version = "3.7.2"
   hashes = [
