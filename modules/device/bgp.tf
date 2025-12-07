@@ -30,6 +30,7 @@ resource "netboxbgp_session" "core_v4" {
   site   = each.value.site_id
   tenant = each.value.tenant_id
 
+  name        = "${each.key}-${var.name}-v4"
   description = "${each.key} to ${local.location}"
 }
 
@@ -48,6 +49,7 @@ resource "netboxbgp_session" "core_v6" {
   site   = each.value.site_id
   tenant = each.value.tenant_id
 
+  name        = "${each.key}-${var.name}-v6"
   description = "${each.key} to ${local.location}"
 }
 
@@ -65,6 +67,7 @@ resource "netboxbgp_session" "device_v4" {
   site   = var.site_id
   tenant = var.tenant_id
 
+  name        = "${var.name}-${each.key}-v4"
   description = "${local.location} to ${each.key}"
 }
 
@@ -82,5 +85,6 @@ resource "netboxbgp_session" "device_v6" {
   site   = var.site_id
   tenant = var.tenant_id
 
+  name        = "${var.name}-${each.key}-v6"
   description = "${local.location} to ${each.key}"
 }
