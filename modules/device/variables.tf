@@ -40,6 +40,8 @@ variable "core_tunnels" {
     device_id       = string
     device_type     = string
     primary_ipv4_id = number
+    site_id         = number
+    tenant_id       = number
   }))
   description = "info about tunnel peers"
 }
@@ -124,4 +126,15 @@ variable "tunnel_endpoint_address_id" {
     condition     = var.use_dnat_for_gre || var.tunnel_endpoint_address_id != null
     error_message = "When use_dnat_for_gre is not set, this needs to be set"
   }
+}
+
+variable "isp_asn_id" {
+  type        = number
+  description = "Id of AS number object of Freifunk provider"
+}
+
+variable "use_ibgp" {
+  type        = bool
+  description = "Whether to use iBGP on the tunnel (considered legacy)"
+  default     = false
 }

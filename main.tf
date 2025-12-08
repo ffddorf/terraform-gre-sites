@@ -29,6 +29,9 @@ module "device" {
   tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
 
   tunnel_group_id = netbox_vpn_tunnel_group.sites.id
+
+  isp_asn_id = data.netbox_asn.ffddorf.id
+  use_ibgp   = true # todo: phase this out
 }
 
 resource "netbox_vpn_tunnel_group" "tenants" {
@@ -59,4 +62,6 @@ module "tenant" {
   tunnel_vrf_v6_id      = data.netbox_prefix.tunnels_prefix_v6.vrf_id
   tunnel_prefix_role_id = data.netbox_ipam_role.transfer.id
   tunnel_group_id       = netbox_vpn_tunnel_group.tenants.id
+
+  isp_asn_id = data.netbox_asn.ffddorf.id
 }

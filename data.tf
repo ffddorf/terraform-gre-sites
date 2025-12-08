@@ -65,14 +65,18 @@ locals {
   }
   core_devices_unsorted = merge(
     { for dev in data.netbox_devices.core_routers.devices : dev.name => {
-      id     = dev.device_id
-      name   = dev.name
-      device = dev
+      id        = dev.device_id
+      name      = dev.name
+      device    = dev
+      site_id   = dev.site_id
+      tenant_id = dev.tenant_id
     } },
     { for vm in data.netbox_virtual_machines.core_routers.vms : vm.name => {
-      id   = vm.vm_id
-      name = vm.name
-      vm   = vm
+      id        = vm.vm_id
+      name      = vm.name
+      vm        = vm
+      site_id   = vm.site_id
+      tenant_id = vm.tenant_id
     } },
   )
   core_device_names_sorted = sort(keys(local.core_devices_unsorted))
@@ -82,6 +86,8 @@ locals {
     device_id       = dev.id
     device_type     = can(dev.vm) ? "vm" : "device"
     primary_ipv4_id = one(data.netbox_ip_addresses.core_primary[dev.name].ip_addresses).id
+    site_id         = dev.site_id
+    tenant_id       = dev.tenant_id
   }]
 }
 
@@ -92,4 +98,8 @@ data "netbox_ip_addresses" "core_primary" {
     name  = "ip_address"
     value = can(each.value.vm) ? each.value.vm.primary_ip4 : each.value.device.primary_ipv4
   }
+}
+
+data "netbox_asn" "ffddorf" {
+  asn = 207871
 }

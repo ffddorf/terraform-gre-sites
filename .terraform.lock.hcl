@@ -24,6 +24,23 @@ provider "registry.terraform.io/e-breuninger/netbox" {
   ]
 }
 
+provider "registry.terraform.io/ffddorf/netbox-bgp" {
+  version     = "0.1.0-rc6"
+  constraints = "0.1.0-rc6"
+  hashes = [
+    "h1:gbQ9PU3xMJvxamVyyRqV4ZwebuhyuX8zd0uQ3Qc25G0=",
+    "zh:18846a99bb5468a062a9517f4c8b86a68063dc29c954d48406e61744fcc28e14",
+    "zh:2ca4a070605e369b9930070c90fb01c50bf0e172691523271ba3fbc838a60d89",
+    "zh:4d0b6f3d4dfdc32698ce66a3ba49218e273d36fd9c0b150fa2e2fae7a41e18d8",
+    "zh:535e6e98ba63b0bf501b5c7def7fcdfe3195e3379464893d91cab6be8fbdb015",
+    "zh:890df766e9b839623b1f0437355032a3c006226a6c200cd911e15ee1a9014e9f",
+    "zh:927d5eef902281e7fcdba127f096d6e838b20c2a31cdf841cfcdf998d982a08c",
+    "zh:a913d32b104ac4e12bb4dfb296851348d922467b2716245d548d506b7105e268",
+    "zh:b386800afd8fe32397e6bad8a6c222ccaa34c68542e2db81fc4029ce82aad034",
+    "zh:c7d2b505e8a05570b27460aef15d8abbb8dfed891247d1550ba24d5106cd61ab",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/random" {
   version = "3.7.2"
   hashes = [
