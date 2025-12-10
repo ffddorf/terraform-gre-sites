@@ -70,7 +70,7 @@ resource "netbox_ip_address" "wan" {
   device_interface_id = local.wan.id
   tenant_id           = data.netbox_tenant.tenant.id
 
-  description = "Tunnel endpoint for ${local.device.name}"
+  description = "Tunnel endpoint for ${local.device.name} (${data.netbox_site.site.name})"
 }
 
 locals {
