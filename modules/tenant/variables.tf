@@ -20,6 +20,12 @@ variable "device_name" {
   default     = null
 }
 
+variable "platform" {
+  type        = string
+  description = "Name of the router platform to assign to the device (when existing_router is not set)"
+  default     = null
+}
+
 variable "remote_ip" {
   type        = string
   description = "IPv4 address to use as tunnel endpoint when existing_router is not set"

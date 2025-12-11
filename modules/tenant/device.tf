@@ -6,6 +6,12 @@ data "netbox_device_type" "router" {
   slug = "router"
 }
 
+data "netbox_platform" "router" {
+  count = var.platform != null ? 1 : 0
+
+  name = var.platform
+}
+
 resource "netbox_device" "router" {
   count = var.existing_router == null ? 1 : 0
 
@@ -14,6 +20,7 @@ resource "netbox_device" "router" {
   role_id        = data.netbox_device_role.router.id
   tenant_id      = data.netbox_tenant.tenant.id
   device_type_id = data.netbox_device_type.router.id
+  platform_id    = one(data.netbox_platform.router[*].id)
 }
 
 data "netbox_devices" "router" {

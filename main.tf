@@ -51,6 +51,7 @@ module "tenant" {
   existing_router = each.value.existing_router
   device_name     = "ext-${each.key}"
   remote_ip       = each.value.remote_ip
+  platform        = each.value.platform
 
   core_tunnels = local.core_tunnels
 

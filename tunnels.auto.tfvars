@@ -10,5 +10,6 @@ tenant_tunnels = [
     site   = "bruesseler-strasse"
 
     remote_ip = "213.168.81.93/29"
+    platform  = "EdgeOS"
   },
 ]
