@@ -54,6 +54,7 @@ variable "tenant_tunnels" {
     existing_router = optional(string) # name
     remote_ip       = optional(string)
     platform        = optional(string)
+    asn             = optional(number)
   }))
   default     = []
   description = "Custom GRE tunnels provided to external tenants"

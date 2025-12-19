@@ -65,4 +65,5 @@ module "tenant" {
   tunnel_group_id       = netbox_vpn_tunnel_group.tenants.id
 
   isp_asn_id = data.netbox_asn.ffddorf.id
+  peer_asn   = each.value.asn
 }

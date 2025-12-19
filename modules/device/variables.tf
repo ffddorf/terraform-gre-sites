@@ -138,3 +138,9 @@ variable "use_ibgp" {
   description = "Whether to use iBGP on the tunnel (considered legacy)"
   default     = false
 }
+
+variable "peer_asn" {
+  type        = number
+  description = "AS number of the peer"
+  default     = null
+}
