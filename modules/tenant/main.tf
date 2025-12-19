@@ -41,4 +41,5 @@ module "tunnel" {
   tunnel_group_id = var.tunnel_group_id
 
   isp_asn_id = var.isp_asn_id
+  peer_asn   = var.peer_asn
 }

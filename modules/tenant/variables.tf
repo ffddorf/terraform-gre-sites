@@ -79,3 +79,8 @@ variable "tunnel_group_id" {
 variable "isp_asn_id" {
   type = number
 }
+
+variable "peer_asn" {
+  type        = number
+  description = "AS number of the peer"
+}
