@@ -19,7 +19,7 @@ resource "netbox_asn" "device" {
 
 locals {
   device_as_id = var.use_ibgp ? var.isp_asn_id : (
-    var.peer_asn == null ? one(data.netbox_asn.manual).id : one(netbox_asn.device).id
+    var.peer_asn != null ? one(data.netbox_asn.manual).id : one(netbox_asn.device).id
   )
 }
 
