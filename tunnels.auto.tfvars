@@ -17,7 +17,7 @@ tenant_tunnels = [
     tenant = "freifunk-troisdorf"
     site   = "bonner-strasse"
 
-    remote_ip = "77.37.108.81/29"
+    remote_ip = "77.37.108.82/29"
     asn       = 64513
     platform  = "EdgeOS"
   },
