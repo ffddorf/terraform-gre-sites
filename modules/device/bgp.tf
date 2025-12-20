@@ -2,14 +2,25 @@ data "netbox_rir" "RFC6996" {
   name = "RFC6996"
 }
 
-data "netbox_asn" "peer" {
-  count = var.use_ibgp ? 0 : 1
+data "netbox_asn" "manual" {
+  count = var.peer_asn != null && !var.use_ibgp ? 1 : 0
 
   asn = var.peer_asn
 }
 
+resource "netbox_asn" "device" {
+  count = var.peer_asn == null && !var.use_ibgp ? 1 : 0
+
+  asn    = 4200000000 + var.device_id
+  rir_id = data.netbox_rir.RFC6996.id
+
+  description = local.location
+}
+
 locals {
-  device_as_id = var.use_ibgp ? var.isp_asn_id : one(data.netbox_asn.peer).id
+  device_as_id = var.use_ibgp ? var.isp_asn_id : (
+    var.peer_asn == null ? one(data.netbox_asn.manual).id : one(netbox_asn.device).id
+  )
 }
 
 resource "netboxbgp_session" "core_v4" {

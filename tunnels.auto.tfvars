@@ -4,7 +4,6 @@ tenant_tunnels = [
     site   = "franzfreunde"
 
     existing_router = "R70"
-    asn             = 64514
   },
   {
     tenant = "freifunk-troisdorf"

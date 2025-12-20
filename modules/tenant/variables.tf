@@ -83,4 +83,5 @@ variable "isp_asn_id" {
 variable "peer_asn" {
   type        = number
   description = "AS number of the peer"
+  default     = null
 }
