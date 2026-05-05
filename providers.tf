@@ -6,7 +6,7 @@ terraform {
     }
     netboxbgp = {
       source  = "ffddorf/netbox-bgp"
-      version = "0.1.0-rc6"
+      version = "0.1.0"
     }
   }
 }

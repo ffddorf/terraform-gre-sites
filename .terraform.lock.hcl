@@ -25,19 +25,26 @@ provider "registry.terraform.io/e-breuninger/netbox" {
 }
 
 provider "registry.terraform.io/ffddorf/netbox-bgp" {
-  version     = "0.1.0-rc6"
-  constraints = "0.1.0-rc6"
+  version     = "0.1.0"
+  constraints = "0.1.0"
   hashes = [
-    "h1:gbQ9PU3xMJvxamVyyRqV4ZwebuhyuX8zd0uQ3Qc25G0=",
-    "zh:18846a99bb5468a062a9517f4c8b86a68063dc29c954d48406e61744fcc28e14",
-    "zh:2ca4a070605e369b9930070c90fb01c50bf0e172691523271ba3fbc838a60d89",
-    "zh:4d0b6f3d4dfdc32698ce66a3ba49218e273d36fd9c0b150fa2e2fae7a41e18d8",
-    "zh:535e6e98ba63b0bf501b5c7def7fcdfe3195e3379464893d91cab6be8fbdb015",
+    "h1:21WxJJaXsfiw2PV6e7PcZgbg28O1iQBznQF85qj0u38=",
+    "h1:3OevfWENOt6TzdW/Bt8QEbPM+be/JBEUqhB1LvXIFj4=",
+    "h1:67Qise1m0nVO5+yG0m1GaJS7Zr6980+KiCOeob82V+g=",
+    "h1:HVEJnMgXYQqkS/XPPcyeANksEYdoovlaR1LeOVgWhj0=",
+    "h1:IljTLS+rf6o4mwVM1iMT3C4APp4N0MQ4SgAlIQUZgLA=",
+    "h1:IoHitgiJvJfBYJ+6Hhi74zkxBhmoFSDZOfixFkpO8c0=",
+    "h1:QSJGMZT9snX7OsbxgGhqI0EUkDNwp2TXzccZ2M5+3yc=",
+    "h1:UJZwXYu5UnDF4j79nGmnceMK3HWed1WQnT47Fm6DrWQ=",
+    "zh:151441dd498d7ceed059a85b443d553e1deb7ee596c3d726a922a0ba01f6d794",
+    "zh:2ca12624e1e09928ca470c4cadc3ce64049a9e00a5d2d9ac712df580ac602822",
+    "zh:343b6e1375971be5048ae31a2955a08bd0f3547a4aa27f36bb7b2be094c1b031",
+    "zh:5430ee846159642e9c452955d4c1a8ca8b59bcf3d0ae6475efc8007cf68d6779",
     "zh:890df766e9b839623b1f0437355032a3c006226a6c200cd911e15ee1a9014e9f",
-    "zh:927d5eef902281e7fcdba127f096d6e838b20c2a31cdf841cfcdf998d982a08c",
-    "zh:a913d32b104ac4e12bb4dfb296851348d922467b2716245d548d506b7105e268",
-    "zh:b386800afd8fe32397e6bad8a6c222ccaa34c68542e2db81fc4029ce82aad034",
-    "zh:c7d2b505e8a05570b27460aef15d8abbb8dfed891247d1550ba24d5106cd61ab",
+    "zh:9c086f1f7478365ad0735aa3a184bcfdbec9bf3b9ee678d274c11cb11a6e9d29",
+    "zh:b5cd2bd026b8f241e2fe277b060eb80f9eb21ca53e33fba9441871feab71fce9",
+    "zh:b96dd977fb78f0a4d378f8210513e9db8b30adf28c8ec82a41714aaf1ce3b9fe",
+    "zh:f7bc73788472c5cca2c27ee5b96b7e974c8140e4bdaf1ed31b7ce17b1d4e2588",
   ]
 }
 
